@@ -1,6 +1,7 @@
 # todo-list-app
 
 First project using React.js and Django\
+\
 In the project directory, you can run:
 
 ### `npm start`
