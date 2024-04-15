@@ -12,7 +12,7 @@ function TodoList() {
 
   const fetchTodoItems = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/tasks/");
+      const response = await axios.get("http://localhost:8000/api/tasks/");
       setTasks(response.data);
     } catch (error) {
       console.error("Error fetching todo items:", error);
@@ -28,7 +28,7 @@ function TodoList() {
         date: currentDate.toLocaleDateString(),
         time: currentDate.toLocaleTimeString(),
       };
-      await axios.post("http://127.0.0.1:8000/api/tasks/", newTask);
+      await axios.post("http://localhost:8000/api/tasks/", newTask);
       fetchTodoItems();
       setText("");
     } catch (error) {
@@ -38,7 +38,7 @@ function TodoList() {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/tasks/${id}/`);
+      await axios.delete(`http://localhost:8000/api/tasks/${id}/`);
       fetchTodoItems();
     } catch (error) {
       console.error("Error deleting todo item:", error);
@@ -48,7 +48,7 @@ function TodoList() {
   const editTask = async (id, newText) => {
     try {
       const currentDate = new Date();
-      await axios.put(`http://127.0.0.1:8000/api/tasks/${id}/`, {
+      await axios.put(`http://localhost:8000/api/tasks/${id}/`, {
         text: newText,
         completed: false,
         date: currentDate.toLocaleDateString(),
@@ -63,7 +63,7 @@ function TodoList() {
   const toggleCompleted = async (id) => {
     try {
       const task = tasks.find((task) => task.id === id);
-      await axios.put(`http://127.0.0.1:8000/api/tasks/${id}/`, {
+      await axios.put(`http://localhost:8000/api/tasks/${id}/`, {
         ...task,
         completed: !task.completed,
       });
